@@ -1,5 +1,7 @@
 <?php
 
+    include('db_con.php');
+
    if(isset($_POST['uname']) && isset($_POST['password'])){
 
         function validate($data){
@@ -19,7 +21,14 @@
             header("location: index.php?error=Password is required");
             exit();
         }else{
-            echo "Valid input";
+            $sql = "SELECT * FROM users WHERE user_name='$uname' AND password='$pass'";
+
+            $result = mysqli_query($con, $sql);
+
+            if(mysqli_num_rows($result)){
+                echo "Hello";
+
+            }
         }
 
 
