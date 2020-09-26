@@ -1,5 +1,7 @@
 <?php
 
+    session_start();
+
     include('db_con.php');
 
    if(isset($_POST['uname']) && isset($_POST['password'])){
@@ -25,9 +27,30 @@
 
             $result = mysqli_query($con, $sql);
 
-            if(mysqli_num_rows($result)){
-                echo "Hello";
+            if(mysqli_num_rows($result) === 1){
+                $row = mysqli_fetch_assoc($result);
+                if($row['user_name'] === $uname && $row['password'] === $pass){
+                    $_SESSION['user_name'] = $row['user_name'];
+                    $_SESSION['name'] = $row['name'];
+                    $_SESSION['id'] = $row['id'];
+                    header('location: home.php');
+                    exit();
 
+                }else{
+                    header('location: index.php?error=Incorrect user name or password');
+                    exit();
+                }
+
+            }
+
+            if(mysqli_num_rows($result) === 1){
+                $row = mysqli_fetch_assoc($result);
+
+                print_r($row);
+
+            }else{
+                header("Location: index.php?error=Incorrect user name or password");
+                exit();
             }
         }
 
