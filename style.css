@@ -17,6 +17,7 @@ form{
     padding: 30px;
     background: #fff;
     border-radius: 20px;
+    
 }
 
 h2{
@@ -31,4 +32,24 @@ input{
     padding: 10px;
     margin: 10px auto;
     border-radius: 5px;
+}
+
+label{
+    color: #888;
+    font-size: 18px;
+    padding: 10px;
+}
+
+button{
+    float: right;
+    background: #555;
+    padding: 10px 15px;
+    color: #fff;
+    border-radius: 5px;
+    margin-right: 10px;
+    border: none;
+}
+
+button:hover{
+    opacity: .7;
 }
